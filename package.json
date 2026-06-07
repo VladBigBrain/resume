@@ -2,7 +2,7 @@
   "name": "resume",
   "private": false,
   "version": "0.0.0",
-  "description": "Personal resume website built with React, TypeScript, Vite, and Vercel.",
+  "description": "Backend and AI engineer resume website built with React, TypeScript, Vite, and Vercel.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-react": "^1.17.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

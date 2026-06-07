@@ -1,12 +1,13 @@
 # Resume
 
-Personal resume website for Vladislav, built with React, TypeScript, Vite, and Vercel.
+Personal resume website for Vlad, focused on Java backend engineering and AI systems for banking products. Built with React, TypeScript, Vite, and Vercel.
 
 ## Stack
 
 - React
 - TypeScript
 - Vite
+- Lucide React
 - Vercel
 - ESLint
 
