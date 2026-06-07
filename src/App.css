@@ -68,6 +68,14 @@
   padding-top: 4px;
 }
 
+.hero-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  width: 100%;
+}
+
 .availability {
   display: inline-flex;
   align-items: center;
@@ -81,6 +89,39 @@
   width: 10px;
   height: 10px;
   border-radius: 999px;
+  background: var(--blue);
+}
+
+.language-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fbff;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.04);
+}
+
+.language-switch button {
+  min-width: 38px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.language-switch button:hover {
+  color: var(--blue);
+}
+
+.language-switch button[aria-pressed='true'] {
+  color: #ffffff;
   background: var(--blue);
 }
 
@@ -571,6 +612,10 @@
     justify-items: start;
   }
 
+  .hero-controls {
+    justify-content: flex-start;
+  }
+
   .contact-actions {
     justify-content: flex-start;
   }
@@ -630,6 +675,15 @@
   .contact-actions,
   .contact-strip div {
     width: 100%;
+  }
+
+  .hero-controls {
+    display: grid;
+    gap: 12px;
+  }
+
+  .language-switch {
+    width: fit-content;
   }
 
   .contact-button,

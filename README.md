@@ -32,7 +32,7 @@ All resume content lives in:
 src/resume.ts
 ```
 
-Update that file to change profile details, links, experience, projects, skills, education, and contact information.
+Update that file to change RU/EN profile details, links, experience, projects, skills, and contact information.
 
 ## Deploy to Vercel
 

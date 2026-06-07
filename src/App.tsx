@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   BarChart3,
   Code2,
@@ -15,7 +16,30 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import './App.css'
-import { resume, type ContactLink, type Impact, type Metric, type Project } from './resume'
+import {
+  languageOptions,
+  resumes,
+  type ContactLink,
+  type Impact,
+  type Language,
+  type Metric,
+  type Project,
+  type ResumeContent,
+} from './resume'
+
+const languageStorageKey = 'resume-language'
+
+const isLanguage = (value: string | null): value is Language => value === 'ru' || value === 'en'
+
+const getInitialLanguage = (): Language => {
+  if (typeof window === 'undefined') {
+    return 'ru'
+  }
+
+  const savedLanguage = window.localStorage.getItem(languageStorageKey)
+
+  return isLanguage(savedLanguage) ? savedLanguage : 'ru'
+}
 
 const metricIcons: Record<Metric['icon'], LucideIcon> = {
   users: Users,
@@ -73,6 +97,32 @@ function ContactButton({ link }: { link: ContactLink }) {
   )
 }
 
+function LanguageSwitch({
+  language,
+  label,
+  onChange,
+}: {
+  language: Language
+  label: string
+  onChange: (language: Language) => void
+}) {
+  return (
+    <div className="language-switch" role="group" aria-label={label}>
+      {languageOptions.map((option) => (
+        <button
+          aria-pressed={language === option.code}
+          key={option.code}
+          onClick={() => onChange(option.code)}
+          title={option.name}
+          type="button"
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 function SectionTitle({ children, id }: { children: string; id?: string }) {
   return (
     <h2 className="section-title" id={id}>
@@ -95,7 +145,13 @@ function MetricCard({ metric }: { metric: Metric }) {
   )
 }
 
-function ProjectRow({ project }: { project: Project }) {
+function ProjectRow({
+  labels,
+  project,
+}: {
+  labels: ResumeContent['labels']['projectColumns']
+  project: Project
+}) {
   const Icon = projectIcons[project.icon]
 
   return (
@@ -110,19 +166,19 @@ function ProjectRow({ project }: { project: Project }) {
         </div>
         <div className="project-details">
           <div>
-            <h4>Problem</h4>
+            <h4>{labels.problem}</h4>
             <p>{project.problem}</p>
           </div>
           <div>
-            <h4>Role</h4>
+            <h4>{labels.role}</h4>
             <p>{project.role}</p>
           </div>
           <div>
-            <h4>Result</h4>
+            <h4>{labels.result}</h4>
             <p>{project.result}</p>
           </div>
           <div>
-            <h4>Stack</h4>
+            <h4>{labels.stack}</h4>
             <p>{project.stack.join(', ')}</p>
           </div>
         </div>
@@ -144,6 +200,18 @@ function ImpactCard({ item }: { item: Impact }) {
 }
 
 function App() {
+  const [language, setLanguage] = useState<Language>(getInitialLanguage)
+  const resume = resumes[language]
+
+  useEffect(() => {
+    document.documentElement.lang = resume.meta.lang
+    document.title = resume.meta.title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', resume.meta.description)
+    window.localStorage.setItem(languageStorageKey, language)
+  }, [language, resume.meta.description, resume.meta.lang, resume.meta.title])
+
   return (
     <main className="resume-shell">
       <section className="hero" aria-labelledby="resume-title">
@@ -151,18 +219,25 @@ function App() {
           <h1 id="resume-title">{resume.profile.name}</h1>
           <p className="role">{resume.profile.title}</p>
           <p className="headline">{resume.profile.headline}</p>
-          <ul className="stack-list" aria-label="Core stack">
+          <ul className="stack-list" aria-label={resume.labels.coreStack}>
             {resume.profile.stack.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
 
-        <aside className="hero-aside" aria-label="Contact details">
-          <p className="availability">
-            <span aria-hidden="true"></span>
-            {resume.profile.availability}
-          </p>
+        <aside className="hero-aside" aria-label={resume.labels.contactDetails}>
+          <div className="hero-controls">
+            <p className="availability">
+              <span aria-hidden="true"></span>
+              {resume.profile.availability}
+            </p>
+            <LanguageSwitch
+              label={resume.labels.language}
+              language={language}
+              onChange={setLanguage}
+            />
+          </div>
           <div className="contact-actions">
             {resume.contacts.map((link) => (
               <ContactButton key={link.href} link={link} />
@@ -175,23 +250,27 @@ function App() {
         </aside>
       </section>
 
-      <section className="metrics" aria-label="Resume metrics">
+      <section className="metrics" aria-label={resume.labels.resumeMetrics}>
         {resume.metrics.map((metric) => (
           <MetricCard key={metric.value} metric={metric} />
         ))}
       </section>
 
       <section className="section-block" id="projects" aria-labelledby="projects-title">
-        <SectionTitle id="projects-title">Selected Projects</SectionTitle>
+        <SectionTitle id="projects-title">{resume.labels.sections.projects}</SectionTitle>
         <div className="project-list">
           {resume.projects.map((project) => (
-            <ProjectRow key={project.name} project={project} />
+            <ProjectRow
+              key={project.name}
+              labels={resume.labels.projectColumns}
+              project={project}
+            />
           ))}
         </div>
       </section>
 
       <section className="section-block" id="experience" aria-labelledby="experience-title">
-        <SectionTitle id="experience-title">Experience</SectionTitle>
+        <SectionTitle id="experience-title">{resume.labels.sections.experience}</SectionTitle>
         <div className="experience-list">
           {resume.experience.map((item) => (
             <article className="experience-item" key={item.period}>
@@ -214,7 +293,7 @@ function App() {
       </section>
 
       <section className="section-block" aria-labelledby="impact-title">
-        <SectionTitle id="impact-title">Engineering Impact</SectionTitle>
+        <SectionTitle id="impact-title">{resume.labels.sections.impact}</SectionTitle>
         <div className="impact-grid">
           {resume.impact.map((item) => (
             <ImpactCard key={item.title} item={item} />
@@ -223,7 +302,7 @@ function App() {
       </section>
 
       <section className="section-block" id="skills" aria-labelledby="skills-title">
-        <SectionTitle id="skills-title">Skills</SectionTitle>
+        <SectionTitle id="skills-title">{resume.labels.sections.skills}</SectionTitle>
         <div className="skills-grid">
           {resume.skills.map((group) => (
             <article className="skill-group" key={group.title}>
@@ -234,12 +313,12 @@ function App() {
         </div>
       </section>
 
-      <section className="bottom-grid" aria-label="About and links">
+      <section className="bottom-grid" aria-label={resume.labels.aboutAndLinks}>
         <article className="about-card">
-          <h2>About Me</h2>
+          <h2>{resume.labels.sections.about}</h2>
           <p>{resume.about.text}</p>
           <div className="focus-row" aria-label="Focus areas">
-            <strong>Фокус:</strong>
+            <strong>{resume.labels.focus}</strong>
             {resume.about.focus.map((item) => (
               <span key={item}>{item}</span>
             ))}
@@ -247,7 +326,7 @@ function App() {
         </article>
 
         <article className="links-card">
-          <h2>Links</h2>
+          <h2>{resume.labels.sections.links}</h2>
           <div className="links-grid">
             {resume.links.map((link) => (
               <a key={link.href} href={link.href}>
@@ -259,9 +338,9 @@ function App() {
         </article>
       </section>
 
-      <footer className="contact-strip" aria-label="Contact call to action">
+      <footer className="contact-strip" aria-label={resume.labels.contactCta}>
         <Mail aria-hidden="true" />
-        <p>Interested in backend, AI systems, and developer automation roles.</p>
+        <p>{resume.labels.footerText}</p>
         <div>
           {resume.contacts.slice(0, 2).map((link) => (
             <ContactButton key={link.href} link={link} />
