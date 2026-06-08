@@ -14,7 +14,7 @@ export type Metric = {
 }
 
 export type Project = {
-  icon: 'sparkles' | 'database' | 'code'
+  icon: 'history' | 'profile' | 'ai-agent' | 'fees' | 'account-lock'
   name: string
   badge: string
   problem: string
@@ -106,18 +106,19 @@ export const languageOptions = [
 ] satisfies Array<{ code: Language; label: string; name: string }>
 
 const sharedContacts = {
-  telegram: 'https://t.me/VladBigBrain',
-  email: 'mailto:101448509+VladBigBrain@users.noreply.github.com',
+  telegram: 'https://t.me/Vometelica',
+  telegramChannel: 'https://t.me/+UGgerP1xfy4yZGQy',
+  email: 'mailto:kykaru@outlook.com',
   github: 'https://github.com/VladBigBrain',
   linkedin: 'https://linkedin.com/in/vladislav',
-  linktree: 'https://linktr.ee/vladbigbrain_dev',
+  linktree: 'https://linktr.ee/vladmetelitsa',
 }
 
 export const resumes = {
   ru: {
     meta: {
       lang: 'ru',
-      title: 'Vlad | Java Backend Engineer',
+      title: 'Vladislav Metelitsa | Java Backend Engineer',
       description: 'Резюме Java Backend Engineer с фокусом на AI-системы для банковских продуктов.',
     },
     labels: {
@@ -145,12 +146,12 @@ export const resumes = {
       footerText: 'Интересны роли в backend, AI-системах и автоматизации разработки.',
     },
     profile: {
-      name: 'Vlad',
+      name: 'Vladislav Metelitsa',
       title: 'Java Backend Engineer',
       headline: 'создаю AI-системы для банковских продуктов.',
       availability: 'Доступен для Backend / AI Engineer ролей',
       location: 'Москва, Россия',
-      stack: ['Java 17', 'Spring Boot', 'Kafka', 'PostgreSQL', 'AI Agents', 'MCP', 'LLM Integration'],
+      stack: ['Java 17 / 8', 'Spring Boot/Data/Web', 'Kafka', 'PostgreSQL', 'AI Agents', 'MCP', 'LLM Integration'],
     },
     contacts: [
       {
@@ -172,116 +173,128 @@ export const resumes = {
     ],
     metrics: [
       {
-        icon: 'users',
-        value: '500k+',
-        label: 'пользователей банковских сервисов',
+        icon: 'zap',
+        value: '100 TPS',
+        label: 'пропускная способность продуктовых сервисов',
       },
       {
-        icon: 'zap',
-        value: '3x',
-        label: 'ускорение обработки запросов',
+        icon: 'users',
+        value: '3',
+        label: 'продукта с нуля до production',
       },
       {
         icon: 'shield',
-        value: '85%',
-        label: 'покрытие критического кода тестами',
+        value: 'DDD/TDD',
+        label: 'архитектура, тесты и agent-driven подход',
       },
       {
         icon: 'database',
-        value: '70%',
-        label: 'снижение нагрузки на БД',
+        value: 'НТ',
+        label: 'оптимизация и нагрузочное тестирование',
       },
     ],
     projects: [
       {
-        icon: 'sparkles',
-        name: 'AI Banking Assistant',
-        badge: 'AI / LLM',
-        problem:
-          'Банковской платформе нужен AI-помощник для обработки сложных пользовательских запросов и взаимодействия с внутренними сервисами.',
-        role:
-          'Интегрировал LLM с внутренними сервисами, построил агентный workflow, подключил MCP tools и feedback loop, реализовал систему оценки качества ответов.',
-        result:
-          'AI Assistant в production для корпоративных клиентов. Сокращение времени обработки запросов в 3 раза.',
-        stack: ['Java', 'Python', 'FastAPI', 'OpenAI API', 'MCP', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
-      },
-      {
-        icon: 'database',
-        name: 'History Operations Service',
+        icon: 'history',
+        name: 'История операций',
         badge: 'Backend',
         problem:
-          'Необходимо хранить и предоставлять историю операций для 500k+ клиентов с высокой производительностью и согласованностью данных.',
+          'Клиентам и внутренним системам нужен быстрый доступ к истории операций с фильтрами, пагинацией и консистентными данными по счетам и картам.',
         role:
-          'Спроектировал и реализовал микросервис с нуля, реализовал пагинацию, кэширование справочников и идемпотентную обработку обновлений.',
+          'Написал сервис с нуля: архитектура, DDD, Clean Architecture, модульный монолит, TDD, API-контракты, Spring backend, Kafka-интеграции, DevOps-настройки, release и production support.',
         result:
-          'Снизил нагрузку на БД на 70% за счет оптимизации запросов и кэширования. Обеспечил высокую доступность и целостность данных.',
-        stack: ['Java 17', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Redis', 'MapStruct', 'Docker', 'Kubernetes'],
+          'Довел решение от прототипа до production и ускорил вывод истории операций с двух кварталов до одного. Сервис выдерживает высокую нагрузку и снижает нагрузку на БД за счет оптимизации запросов.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'MapStruct', 'Docker', 'OpenShift', 'TDD'],
       },
       {
-        icon: 'code',
-        name: 'Internal AI Platform',
-        badge: 'AI Platform',
+        icon: 'profile',
+        name: 'Профиль клиента',
+        badge: 'Backend',
         problem:
-          'Команде разработки нужны инструменты на основе AI для автоматизации задач и повышения качества кода.',
+          'Банковским каналам нужен единый профиль клиента с актуальными персональными данными, статусами, связями с продуктами и быстрым доступом для смежных сервисов.',
         role:
-          'Исследовал и внедрил multi-agent архитектуру, разработал инструменты статического анализа и генерации кода, оркестрировал AI-агентов.',
+          'Собрал сервис с нуля: архитектура, DDD-модель, Clean Architecture, модульный монолит, Spring backend, API-контракты, TDD, DevOps pipeline и production release.',
         result:
-          'Автоматизация рутинных задач разработки. Ускорение разработки и улучшение качества кода за счет AI-инструментов.',
-        stack: ['Python', 'LangChain', 'FastAPI', 'OpenAI API', 'SonarQube API', 'GitLab API', 'PostgreSQL', 'Docker'],
+          'Профиль прошел путь от прототипа до production и стал единой точкой доступа к клиентским данным для продуктовых команд.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'REST', 'Kafka', 'PostgreSQL', 'OpenAPI', 'JUnit', 'Mockito'],
+      },
+      {
+        icon: 'ai-agent',
+        name: 'AI Агент Транзакционный',
+        badge: 'AI / Agents',
+        problem:
+          'Пользователям и операторам нужен интеллектуальный помощник, который понимает вопросы по транзакциям и безопасно обращается к внутренним банковским сервисам.',
+        role:
+          'Вел решение от прототипа до production: агентная архитектура, Clean Architecture, LLM-интеграция со Spring backend-сервисами, tool-calling, DevOps, release и TDD-подход к проверкам.',
+        result:
+          'AI-агент помогает разбирать транзакционные кейсы быстрее, снижает ручную нагрузку и поддерживает контролируемый доступ к банковским данным.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Python', 'FastAPI', 'OpenAI API', 'MCP', 'PostgreSQL', 'Docker', 'OpenShift'],
+      },
+      {
+        icon: 'fees',
+        name: 'Корректировка комиссий',
+        badge: 'Debit / Credit',
+        problem:
+          'Дебетовым и кредитным продуктам нужен надежный механизм перерасчета и корректировки комиссий с прозрачной историей изменений и контролем повторной обработки.',
+        role:
+          'Разрабатывал сервисную логику корректировок на Java 8 и Spring, модульный монолит, идемпотентные операции, DDD-бизнес-правила, интеграции с продуктовыми сервисами и TDD-тесты.',
+        result:
+          'Сервис снизил количество ручных операций, обеспечил контролируемую корректировку комиссий и повысил прозрачность обработки спорных начислений.',
+        stack: ['Java 8', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'JUnit', 'Mockito', 'MapStruct', 'OpenAPI'],
+      },
+      {
+        icon: 'account-lock',
+        name: 'Сервис блокировки расчетных счетов',
+        badge: 'Core Banking',
+        problem:
+          'Банковским процессам нужен централизованный сервис для блокировки и разблокировки расчетных счетов с учетом статусов, оснований и интеграций с внешними системами.',
+        role:
+          'Проектировал backend-процессы блокировок на Java 17 и Spring, Clean Architecture, модульный монолит, статусы жизненного цикла, DDD-агрегаты, аудит операций, интеграционные события и API для внутренних потребителей.',
+        result:
+          'Сервис унифицировал процесс блокировки счетов, повысил надежность операций и упростил контроль статусов для смежных банковских систем.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'REST', 'Docker', 'OpenShift'],
       },
     ],
     experience: [
       {
         period: '2023 - Сейчас',
-        role: 'Java Developer (AI направление)',
-        company: 'Сбербанк',
-        bullets: [
-          'Разработка AI Assistant для корпоративной банковской платформы',
-          'Интеграция LLM в бизнес-процессы и внутренние сервисы банка',
-          'Проектирование агентных workflow и tool integrations',
-          'Разработка FastAPI-сервисов для AI-компонентов и интеграции с Java backend',
-          'Участие в проектировании масштабируемой архитектуры решений',
-        ],
-      },
-      {
-        period: '2021 - 2023',
         role: 'Java Developer',
         company: 'Сбербанк',
         bullets: [
-          'Разработка высоконагруженных микросервисов на Java 17 и Spring Boot',
-          'Работа с Kafka для асинхронного взаимодействия между сервисами',
-          'Оптимизация запросов и внедрение кэширования справочников',
-          'Настройка CI/CD через Jenkins и GitLab CI',
-          'Обеспечение качества кода и покрытия через SonarQube и unit-тесты',
+          'Около 2 лет коммерческого опыта в Сбере: backend-разработка банковских сервисов на Java и Spring',
+          'За этот период реализовал основные проекты: История операций, Профиль клиента, AI Агент Транзакционный, Корректировка комиссий и сервис блокировки расчетных счетов',
+          'Вел задачи полным циклом: прототип, архитектура, разработка, TDD-тесты, DevOps-настройки, release и production support',
+          'Применял DDD, Clean Architecture и модульный монолит для сервисов с банковской бизнес-логикой',
+          'Интегрировал Kafka, PostgreSQL, OpenShift, CI/CD и внутренние банковские сервисы',
         ],
       },
     ],
     impact: [
       {
         icon: 'trophy',
-        title: 'AI Assistant в production',
-        text: 'Участник внедрения AI Assistant для банковской платформы. Проект в production, охват 500k+ пользователей.',
+        title: '3 продукта с нуля до production',
+        text: 'Полностью провел 3 продукта от прототипа и архитектуры до разработки, DevOps-настроек, release и production support.',
       },
       {
         icon: 'rocket',
-        title: '3x faster processing',
-        text: 'Сократил время обработки запросов с 15 до 3 секунд за счет оптимизации workflow и кэширования.',
+        title: '100 TPS на продуктовых сервисах',
+        text: 'Выводил банковские сервисы на целевую производительность до 100 TPS и проверял стабильность под продуктовой нагрузкой.',
       },
       {
         icon: 'chart',
-        title: '70% less DB load',
-        text: 'Снизил нагрузку на БД на 70% благодаря оптимизации запросов и кэшированию справочников.',
+        title: 'Оптимизация и нагрузочное тестирование',
+        text: 'Самостоятельно настроил и провел НТ, оптимизировал работу сервисов, SQL-запросы, индексы и read-модели, фиксировал узкие места до release.',
       },
       {
         icon: 'shield',
-        title: '85% critical coverage',
-        text: 'Повысил покрытие критического кода unit-тестами и интеграционными тестами через SonarQube.',
+        title: 'DDD, TDD и AI-агенты',
+        text: 'Успешно применил DDD, TDD, Clean Architecture и агентный подход для сервисов с банковской бизнес-логикой и AI-интеграциями.',
       },
     ],
     skills: [
       {
         title: 'Backend',
-        items: ['Java 17', 'Spring Boot', 'Spring Data', 'REST', 'gRPC', 'JDBC', 'JUnit', 'Kafka', 'RabbitMQ', 'PostgreSQL', 'Redis', 'MapStruct'],
+        items: ['Java 17', 'Java 8', 'Spring Boot', 'Spring Data', 'Spring Web', 'Spring Test', 'REST', 'gRPC', 'JDBC', 'JUnit', 'Mockito', 'Kafka', 'RabbitMQ', 'PostgreSQL', 'MapStruct'],
       },
       {
         title: 'AI / LLM',
@@ -289,21 +302,21 @@ export const resumes = {
       },
       {
         title: 'Data',
-        items: ['PostgreSQL', 'ClickHouse', 'Redis', 'Elasticsearch'],
+        items: ['PostgreSQL', 'ClickHouse', 'Elasticsearch', 'SQL optimization', 'Indexes'],
       },
       {
         title: 'DevOps',
-        items: ['Docker', 'Kubernetes', 'Helm', 'Jenkins', 'GitLab CI', 'SonarQube', 'Nexus', 'Linux', 'Terraform basic'],
+        items: ['Docker', 'OpenShift', 'Helm', 'Jenkins', 'GitLab CI', 'SonarQube', 'Nexus', 'Linux', 'Terraform basic'],
       },
       {
         title: 'Tools',
-        items: ['IntelliJ IDEA', 'Git', 'Postman', 'Swagger', 'Confluence', 'Jira', 'DataGrip'],
+        items: ['IntelliJ IDEA', 'Git', 'Postman', 'Swagger', 'Confluence', 'Jira', 'DataGrip', 'TDD', 'DDD', 'Clean Architecture', 'Modular Monolith'],
       },
     ],
     about: {
       text:
         'Увлечен созданием систем на стыке Backend Engineering и AI. Постоянно исследую новые технологии и применяю их в реальных продуктах. Пишу статьи об AI, разработке, архитектуре и автоматизации.',
-      focus: ['AI Engineering', 'Agent Systems', 'Developer Automation', 'Backend Architecture'],
+      focus: ['AI Engineering', 'Agent Systems', 'DDD', 'Clean Architecture', 'Modular Monolith'],
     },
     links: [
       {
@@ -312,8 +325,8 @@ export const resumes = {
         kind: 'github',
       },
       {
-        label: 't.me/VladBigBrain',
-        href: sharedContacts.telegram,
+        label: 'Telegram канал',
+        href: sharedContacts.telegramChannel,
         kind: 'telegram',
       },
       {
@@ -322,7 +335,7 @@ export const resumes = {
         kind: 'link',
       },
       {
-        label: 'linktr.ee/vladbigbrain_dev',
+        label: 'linktr.ee/vladmetelitsa',
         href: sharedContacts.linktree,
         kind: 'link',
       },
@@ -331,7 +344,7 @@ export const resumes = {
   en: {
     meta: {
       lang: 'en',
-      title: 'Vlad | Java Backend Engineer',
+      title: 'Vladislav Metelitsa | Java Backend Engineer',
       description: 'Java Backend Engineer resume focused on AI systems for banking products.',
     },
     labels: {
@@ -359,12 +372,12 @@ export const resumes = {
       footerText: 'Interested in backend, AI systems, and developer automation roles.',
     },
     profile: {
-      name: 'Vlad',
+      name: 'Vladislav Metelitsa',
       title: 'Java Backend Engineer',
       headline: 'building AI systems for banking products.',
       availability: 'Available for Backend / AI Engineer roles',
       location: 'Moscow, Russia',
-      stack: ['Java 17', 'Spring Boot', 'Kafka', 'PostgreSQL', 'AI Agents', 'MCP', 'LLM Integration'],
+      stack: ['Java 17 / 8', 'Spring Boot/Data/Web', 'Kafka', 'PostgreSQL', 'AI Agents', 'MCP', 'LLM Integration'],
     },
     contacts: [
       {
@@ -386,116 +399,128 @@ export const resumes = {
     ],
     metrics: [
       {
-        icon: 'users',
-        value: '500k+',
-        label: 'banking service users',
+        icon: 'zap',
+        value: '100 TPS',
+        label: 'product service throughput',
       },
       {
-        icon: 'zap',
-        value: '3x',
-        label: 'faster request processing',
+        icon: 'users',
+        value: '3',
+        label: 'products built from scratch to production',
       },
       {
         icon: 'shield',
-        value: '85%',
-        label: 'critical code test coverage',
+        value: 'DDD/TDD',
+        label: 'architecture, tests, and agent-driven approach',
       },
       {
         icon: 'database',
-        value: '70%',
-        label: 'lower database load',
+        value: 'Load tests',
+        label: 'optimization and performance validation',
       },
     ],
     projects: [
       {
-        icon: 'sparkles',
-        name: 'AI Banking Assistant',
-        badge: 'AI / LLM',
-        problem:
-          'The banking platform needed an AI assistant for complex user requests and interaction with internal services.',
-        role:
-          'Integrated an LLM with internal services, designed the agent workflow, connected MCP tools and a feedback loop, and built answer quality evaluation.',
-        result:
-          'Delivered an AI Assistant to production for corporate clients and reduced request processing time by 3x.',
-        stack: ['Java', 'Python', 'FastAPI', 'OpenAI API', 'MCP', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
-      },
-      {
-        icon: 'database',
-        name: 'History Operations Service',
+        icon: 'history',
+        name: 'Operation History',
         badge: 'Backend',
         problem:
-          'The platform needed to store and serve operation history for 500k+ clients with high performance and data consistency.',
+          'Customers and internal systems needed fast access to operation history with filters, pagination, and consistent account and card data.',
         role:
-          'Designed and implemented the microservice from scratch, added pagination, reference-data caching, and idempotent update handling.',
+          'Built the service from scratch: architecture, DDD, Clean Architecture, modular monolith, TDD, API contracts, Spring backend implementation, Kafka integrations, DevOps setup, release, and production support.',
         result:
-          'Reduced database load by 70% through query optimization and caching while preserving availability and data integrity.',
-        stack: ['Java 17', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Redis', 'MapStruct', 'Docker', 'Kubernetes'],
+          'Took the solution from prototype to production and reduced the Operation History delivery timeline from two quarters to one. The service handles high load and reduces database pressure through query optimization.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'MapStruct', 'Docker', 'OpenShift', 'TDD'],
       },
       {
-        icon: 'code',
-        name: 'Internal AI Platform',
-        badge: 'AI Platform',
+        icon: 'profile',
+        name: 'Client Profile',
+        badge: 'Backend',
         problem:
-          'The engineering team needed AI-based tools to automate routine development tasks and improve code quality.',
+          'Banking channels needed a unified client profile with current personal data, statuses, product links, and fast access for dependent services.',
         role:
-          'Researched and introduced a multi-agent architecture, built tools for static analysis and code generation, and orchestrated AI agents.',
+          'Built the service from scratch: architecture, DDD model, Clean Architecture, modular monolith, Spring backend, API contracts, TDD, DevOps pipeline, and production release.',
         result:
-          'Automated repetitive engineering tasks and improved development speed and code quality through AI tooling.',
-        stack: ['Python', 'LangChain', 'FastAPI', 'OpenAI API', 'SonarQube API', 'GitLab API', 'PostgreSQL', 'Docker'],
+          'Took the profile from prototype to production and made it a single access point for client data across product teams.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'REST', 'Kafka', 'PostgreSQL', 'OpenAPI', 'JUnit', 'Mockito'],
+      },
+      {
+        icon: 'ai-agent',
+        name: 'Transactional AI Agent',
+        badge: 'AI / Agents',
+        problem:
+          'Users and operators needed an intelligent assistant that understands transaction questions and safely works with internal banking services.',
+        role:
+          'Led the solution from prototype to production: agent architecture, Clean Architecture, LLM integration with Spring backend services, tool-calling, DevOps, release, and TDD-based checks.',
+        result:
+          'The AI agent helps resolve transaction cases faster, reduces manual workload, and keeps access to banking data controlled.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Python', 'FastAPI', 'OpenAI API', 'MCP', 'PostgreSQL', 'Docker', 'OpenShift'],
+      },
+      {
+        icon: 'fees',
+        name: 'Fee Adjustment Service',
+        badge: 'Debit / Credit',
+        problem:
+          'Debit and credit products needed a reliable mechanism for recalculating and adjusting fees with transparent history and safe reprocessing.',
+        role:
+          'Built adjustment service logic with Java 8 and Spring, modular monolith, idempotent operations, DDD business rules, product-service integrations, and TDD tests.',
+        result:
+          'The service reduced manual operations, enabled controlled fee adjustments, and improved transparency for disputed charges.',
+        stack: ['Java 8', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'JUnit', 'Mockito', 'MapStruct', 'OpenAPI'],
+      },
+      {
+        icon: 'account-lock',
+        name: 'Settlement Account Blocking Service',
+        badge: 'Core Banking',
+        problem:
+          'Banking workflows needed a centralized service for blocking and unblocking settlement accounts with statuses, reasons, and external integrations.',
+        role:
+          'Designed Java 17 and Spring backend blocking workflows, Clean Architecture, modular monolith, lifecycle statuses, DDD aggregates, operation audit, integration events, and APIs for internal consumers.',
+        result:
+          'The service unified account-blocking workflows, improved operation reliability, and simplified status control for related banking systems.',
+        stack: ['Java 17', 'Spring Boot', 'Spring Data', 'Spring Web', 'Kafka', 'PostgreSQL', 'REST', 'Docker', 'OpenShift'],
       },
     ],
     experience: [
       {
         period: '2023 - Present',
-        role: 'Java Developer (AI direction)',
-        company: 'Sberbank',
-        bullets: [
-          'Developing an AI Assistant for a corporate banking platform',
-          'Integrating LLMs into business workflows and internal banking services',
-          'Designing agent workflows and tool integrations',
-          'Building FastAPI services for AI components and Java backend integration',
-          'Contributing to scalable solution architecture',
-        ],
-      },
-      {
-        period: '2021 - 2023',
         role: 'Java Developer',
         company: 'Sberbank',
         bullets: [
-          'Developed high-load microservices with Java 17 and Spring Boot',
-          'Worked with Kafka for asynchronous service-to-service communication',
-          'Optimized queries and introduced reference-data caching',
-          'Configured CI/CD through Jenkins and GitLab CI',
-          'Improved code quality and coverage with SonarQube and unit tests',
+          'About 2 years of commercial experience at Sberbank, focused on Java and Spring backend for banking products',
+          'Delivered the main projects during this period: Operation History, Client Profile, Transactional AI Agent, Fee Adjustment Service, and Settlement Account Blocking Service',
+          'Owned the full cycle: prototype, architecture, development, TDD tests, DevOps setup, release, and production support',
+          'Applied DDD, Clean Architecture, and modular monolith patterns to banking-domain services',
+          'Integrated Kafka, PostgreSQL, OpenShift, CI/CD, and internal banking services',
         ],
       },
     ],
     impact: [
       {
         icon: 'trophy',
-        title: 'AI Assistant in production',
-        text: 'Contributed to launching an AI Assistant for a banking platform. The project is in production and reaches 500k+ users.',
+        title: '3 products from scratch to production',
+        text: 'Owned 3 products end to end: prototype, architecture, development, DevOps setup, release, and production support.',
       },
       {
         icon: 'rocket',
-        title: '3x faster processing',
-        text: 'Reduced request processing time from 15 to 3 seconds through workflow optimization and caching.',
+        title: '100 TPS on product services',
+        text: 'Brought banking services to target throughput up to 100 TPS and validated stability under product load.',
       },
       {
         icon: 'chart',
-        title: '70% less DB load',
-        text: 'Reduced database load by 70% through query optimization and reference-data caching.',
+        title: 'Optimization and load testing',
+        text: 'Independently set up and ran load tests, optimized service behavior, SQL queries, indexes, and read models, and fixed bottlenecks before release.',
       },
       {
         icon: 'shield',
-        title: '85% critical coverage',
-        text: 'Raised coverage for critical code through unit and integration tests tracked in SonarQube.',
+        title: 'DDD, TDD, and AI agents',
+        text: 'Successfully applied DDD, TDD, Clean Architecture, and agent-based patterns for banking-domain services and AI integrations.',
       },
     ],
     skills: [
       {
         title: 'Backend',
-        items: ['Java 17', 'Spring Boot', 'Spring Data', 'REST', 'gRPC', 'JDBC', 'JUnit', 'Kafka', 'RabbitMQ', 'PostgreSQL', 'Redis', 'MapStruct'],
+        items: ['Java 17', 'Java 8', 'Spring Boot', 'Spring Data', 'Spring Web', 'Spring Test', 'REST', 'gRPC', 'JDBC', 'JUnit', 'Mockito', 'Kafka', 'RabbitMQ', 'PostgreSQL', 'MapStruct'],
       },
       {
         title: 'AI / LLM',
@@ -503,21 +528,21 @@ export const resumes = {
       },
       {
         title: 'Data',
-        items: ['PostgreSQL', 'ClickHouse', 'Redis', 'Elasticsearch'],
+        items: ['PostgreSQL', 'ClickHouse', 'Elasticsearch', 'SQL optimization', 'Indexes'],
       },
       {
         title: 'DevOps',
-        items: ['Docker', 'Kubernetes', 'Helm', 'Jenkins', 'GitLab CI', 'SonarQube', 'Nexus', 'Linux', 'Terraform basic'],
+        items: ['Docker', 'OpenShift', 'Helm', 'Jenkins', 'GitLab CI', 'SonarQube', 'Nexus', 'Linux', 'Terraform basic'],
       },
       {
         title: 'Tools',
-        items: ['IntelliJ IDEA', 'Git', 'Postman', 'Swagger', 'Confluence', 'Jira', 'DataGrip'],
+        items: ['IntelliJ IDEA', 'Git', 'Postman', 'Swagger', 'Confluence', 'Jira', 'DataGrip', 'TDD', 'DDD', 'Clean Architecture', 'Modular Monolith'],
       },
     ],
     about: {
       text:
         'I enjoy building systems at the intersection of Backend Engineering and AI. I continuously explore new technologies and apply them in real products. I write about AI, software development, architecture, and automation.',
-      focus: ['AI Engineering', 'Agent Systems', 'Developer Automation', 'Backend Architecture'],
+      focus: ['AI Engineering', 'Agent Systems', 'DDD', 'Clean Architecture', 'Modular Monolith'],
     },
     links: [
       {
@@ -526,8 +551,8 @@ export const resumes = {
         kind: 'github',
       },
       {
-        label: 't.me/VladBigBrain',
-        href: sharedContacts.telegram,
+        label: 'Telegram channel',
+        href: sharedContacts.telegramChannel,
         kind: 'telegram',
       },
       {
@@ -536,7 +561,7 @@ export const resumes = {
         kind: 'link',
       },
       {
-        label: 'linktr.ee/vladbigbrain_dev',
+        label: 'linktr.ee/vladmetelitsa',
         href: sharedContacts.linktree,
         kind: 'link',
       },

@@ -279,9 +279,9 @@
 }
 
 .project-icon svg {
-  width: 46px;
-  height: 46px;
-  stroke-width: 1.7;
+  width: 56px;
+  height: 56px;
+  stroke-width: 2.8;
 }
 
 .project-head {
@@ -722,8 +722,8 @@
   }
 
   .project-icon svg {
-    width: 38px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
   }
 
   .project-head {

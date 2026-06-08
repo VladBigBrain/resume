@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ComponentType, type SVGProps } from 'react'
 import {
   BarChart3,
-  Code2,
   Database,
   Link,
   Mail,
@@ -9,7 +8,6 @@ import {
   Rocket,
   Send,
   ShieldCheck,
-  Sparkles,
   Trophy,
   Users,
   Zap,
@@ -48,17 +46,140 @@ const metricIcons: Record<Metric['icon'], LucideIcon> = {
   database: Database,
 }
 
-const projectIcons: Record<Project['icon'], LucideIcon> = {
-  sparkles: Sparkles,
-  database: Database,
-  code: Code2,
-}
-
 const impactIcons: Record<Impact['icon'], LucideIcon> = {
   trophy: Trophy,
   rocket: Rocket,
   chart: BarChart3,
   shield: ShieldCheck,
+}
+
+function OperationHistoryIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      {...props}
+    >
+      <path d="M16 16h21l9 9v24H16V16Z" />
+      <path d="M37 16v10h9" />
+      <path d="M23 33h15" />
+      <path d="M23 41h10" />
+      <path d="M19 12h16" />
+      <path d="M46 35a9 9 0 1 1-6.4 2.7" />
+      <path d="M46 30v6h6" />
+    </svg>
+  )
+}
+
+function ClientProfileIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      {...props}
+    >
+      <rect x="13" y="15" width="38" height="34" rx="7" />
+      <circle cx="27" cy="29" r="6" />
+      <path d="M18 44c2.2-6.2 15.8-6.2 18 0" />
+      <path d="M39 27h7" />
+      <path d="M39 35h7" />
+      <path d="M21 11h22" />
+      <path d="M25 53h14" />
+    </svg>
+  )
+}
+
+function TransactionAgentIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      {...props}
+    >
+      <path d="M14 21a7 7 0 0 1 7-7h22a7 7 0 0 1 7 7v14a7 7 0 0 1-7 7H31l-10 8v-8a7 7 0 0 1-7-7V21Z" />
+      <path d="M24 29h16" />
+      <path d="M32 21v16" />
+      <circle cx="32" cy="29" r="4" />
+      <path d="M18 16 13 9" />
+      <path d="M46 16 51 9" />
+      <circle cx="12" cy="8" r="2" />
+      <circle cx="52" cy="8" r="2" />
+      <path d="M23 50h18" />
+      <path d="m41 50-4-4" />
+    </svg>
+  )
+}
+
+function FeeAdjustmentIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      {...props}
+    >
+      <rect x="12" y="15" width="40" height="34" rx="7" />
+      <path d="M22 24h20" />
+      <path d="M22 40h20" />
+      <circle cx="27" cy="24" r="4" />
+      <circle cx="37" cy="40" r="4" />
+      <path d="M42 24h5" />
+      <path d="M17 40h5" />
+      <path d="M24 49v6" />
+      <path d="M40 9v6" />
+      <path d="m24 55 5-5" />
+      <path d="m40 9-5 5" />
+    </svg>
+  )
+}
+
+function AccountLockIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      {...props}
+    >
+      <path d="M12 25h40" />
+      <path d="M17 25v21" />
+      <path d="M27 25v21" />
+      <path d="M37 25v21" />
+      <path d="M47 25v21" />
+      <path d="M14 46h23" />
+      <path d="M10 52h30" />
+      <path d="M32 11 12 21h40L32 11Z" />
+      <rect x="39" y="36" width="13" height="14" rx="3" />
+      <path d="M42 36v-4a3.5 3.5 0 0 1 7 0v4" />
+      <path d="M45.5 42v3" />
+    </svg>
+  )
+}
+
+const projectIcons: Record<Project['icon'], ComponentType<SVGProps<SVGSVGElement>>> = {
+  history: OperationHistoryIcon,
+  profile: ClientProfileIcon,
+  'ai-agent': TransactionAgentIcon,
+  fees: FeeAdjustmentIcon,
+  'account-lock': AccountLockIcon,
 }
 
 function GitHubMark() {
